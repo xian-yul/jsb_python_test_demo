@@ -1,0 +1,18 @@
+---
+API_NAME: '手机号登录'
+API_URL: '/api/login?timestamp='
+METHOD: 'POST'
+test_data:
+  - phone: 17200000005
+    loginType: 1
+    verifyCode: 666666
+    description: '正常用户登录'
+  - phone: 17200000006
+    loginType: 1
+    verifyCode: 666666
+    description: '新用户登录'
+  - phone: 17200000007
+    loginType: 1
+    verifyCode: 666666
+    description: '异常账号登录'
+headers:

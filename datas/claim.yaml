@@ -1,0 +1,17 @@
+---
+API_NAME: '领取优惠券发送验证码'
+API_URL: '/api/sendSms?timestamp='
+METHOD: 'POST'
+Body:
+  phone: 18912340007
+  smsType: 7
+
+---
+API_NAME: '领取优惠券'
+API_URL: '/api/promotion-activity-participation/claim?timestamp='
+METHOD: 'POST'
+Body:
+  phone: 18912340007
+  activityId: 445
+  activitySharerId: 187
+  verifyCode: 666666

@@ -1,0 +1,132 @@
+---
+API_NAME: '买家设置密码'
+API_URL: '/api/user/password/set?timestamp='
+METHOD: 'POST'
+Body:
+  password: 666666
+headers:
+
+---
+API_NAME: '买家密码登录'
+API_URL: '/api/loginByPwd?timestamp='
+METHOD: 'POST'
+Body:
+  phone: 17200000005
+  password: 666666
+headers:
+
+---
+API_NAME: '买家重置密码'
+API_URL: '/api/user/password/reset?timestamp='
+METHOD: 'POST'
+Body:
+  phone: 17200000005
+  password: 666666
+headers:
+
+---
+API_NAME: '获取账号安全设置信息'
+API_URL: '/api/user/account?timestamp='
+METHOD: 'GET'
+Body:
+
+headers:
+
+---
+API_NAME: '验证企业邀请码'
+API_URL: '/api/userVerifyInfo/verify/inviteCode?timestamp='
+METHOD: 'POST'
+Body:
+  inviteCode: 'PGNUXZJE'
+headers:
+
+---
+API_NAME: '验证身份 - 加入企业'
+API_URL: '/api/userVerifyInfo/authentication?timestamp='
+METHOD: 'POST'
+Body:
+  phone: 17200000005
+  verifyCode: 666666
+  ticket:
+  code: 'HSVRLIMV'
+headers:
+
+---
+API_NAME: '手机号登录 - 发送验证码'
+API_URL: '/api/sendSms?timestamp='
+METHOD: 'POST'
+Body:
+  verifyCode: 666666
+  phone: 13600136002
+headers:
+
+#expectation:
+
+---
+API_NAME: '手机号登录'
+API_URL: '/api/login?timestamp='
+METHOD: 'POST'
+Body:
+  phone: 17200000005
+  loginType: 1
+  verifyCode: 666666
+headers:
+
+---
+API_NAME: '修改手机号 - 旧手机号校验'
+API_URL: '/api/user/modify/phone?timestamp='
+METHOD: 'POST'
+Body:
+  phone: 17200000005
+  verifyCode: 666666
+  hasOldPhone: true
+headers:
+
+---
+API_NAME: '修改手机号 - 新手机号校验'
+API_URL: '/api/user/modify/phone?timestamp='
+METHOD: 'POST'
+Body:
+  phone: 17200000005
+  verifyCode: 666666
+  hasOldPhone: false
+headers:
+
+---
+API_NAME: '人工申诉提交'
+API_URL: '/api/feedback/type/manualAppeal?timestamp='
+METHOD: 'POST'
+Body:
+  name: '张三'
+  phone: 17904710703
+  notifyContact: 17904710703
+  content: '人工申诉测试'
+  device: "Ios"
+headers:
+
+---
+API_NAME: '修改密码'
+API_URL: '/api/user/password/modify?timestamp='
+METHOD: 'POST'
+Body:
+  oldPassword: 666666
+  newPassword: 666666
+headers:
+
+---
+API_NAME: '运营端登录'
+API_URL: '/api/phoneLogin?timestamp='
+METHOD: 'POST'
+Body:
+  phone: 13600136002
+  code: 666666
+headers:
+
+---
+API_NAME: '重置密码'
+API_URL: '/api/user/{userId}/resetPassword?timestamp='
+METHOD: 'PUT'
+Body:
+  userId: 11562
+headers:
+  Content-Type: application/x-www-form-urlencoded

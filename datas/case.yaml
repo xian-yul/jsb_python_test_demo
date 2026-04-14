@@ -1,0 +1,22 @@
+# test_cases.yaml
+test_cases:
+  - case_name: "领取优惠券发送验证码"
+    url: 'http://v3.www.jinsubao.test/api/sendSms?timestamp='
+    method: POST
+    request_data:
+      phone: 18912340001
+      smsType: 7
+    headers:
+      Content-Type: "application/json"
+
+  - case_name: "领取优惠券"
+    url: 'http://v3.www.jinsubao.test/api/promotion-activity-participation/claim?timestamp='
+    method: POST
+    request_data:
+      phone: 18912340001
+      activityId: 441
+      activitySharerId: 186
+      verifyCode: 666666
+    headers:
+      Content-Type: "application/json"
+
