@@ -1,10 +1,10 @@
 import allure
 
 from config.env_config import EnvConfig
-from flows.regular_functions.regular_case import RegularFunctionsCase
+from flows.regular.regular_case import RegularFunctionsCase
 import pytest
 
-from flows.regular_functions.regular_implement import RegularFunctionsImplement
+from flows.regular.regular_implement import RegularFunctionsImplement
 
 
 class TestRegularFunctions:

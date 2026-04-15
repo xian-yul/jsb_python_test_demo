@@ -23,7 +23,7 @@ def prepare_request_data(config, extra_params=None, extra_body=None):
     if extra_params:
         for key, value in extra_params.items():
             url = url.replace(f'{{{key}}}', str(value))  # 支持 {param} 占位符
-
+    print(body)
     encryption_params = generate_encryption_params(body, timestamp)
     sk = encryption_params.get('sk')
     body_json = encryption_params.get('body_json')

@@ -36,7 +36,7 @@ env/
 *.swo
 
 # Logs
-logs/
+output/logs/
 *.log
 
 # Allure Reports
@@ -45,7 +45,7 @@ allure-results/
 
 # Environment variables
 .env
-get_token.env
+#get_token.env
 
 # OS
 .DS_Store

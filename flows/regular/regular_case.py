@@ -1,11 +1,10 @@
 import os
 
-import yaml
-
 from dotenv import load_dotenv
 
 from config.request_handler import RequestHandler
-from flows.request_data import prepare_request_data
+from config.request_data import prepare_request_data
+from utils.get_yaml import load_api_yaml, get_config_by_index, get_config_by_field
 from utils.log import Log
 from utils.util import  get_latest_token, save_user_token
 
@@ -25,26 +24,15 @@ class RegularFunctionsCase:
 
     def _load_api_configs(self):
         """加载所有API配置"""
-        try:
-            with open(self.yaml_file_path, 'r', encoding='utf-8') as file:
-                configs = list(yaml.safe_load_all(file))
-            return configs
-        except Exception as e:
-            print(f"加载YAML配置失败: {e}")
-            return []
+        return load_api_yaml(self.yaml_file_path)
 
     def _get_api_config(self, index):
         """根据索引获取API配置"""
-        if 0 <= index < len(self.api_configs):
-            return self.api_configs[index]
-        return None
+        return get_config_by_index(self.api_configs, index)
 
     def _get_api_config_by_field(self, field_name, field_value):
         """根据字段名和值获取API配置"""
-        for config in self.api_configs:
-            if config.get(field_name) == field_value:
-                return config
-        return None
+        return get_config_by_field(self.api_configs, field_name, field_value)
 
     # 使用示例
     """
