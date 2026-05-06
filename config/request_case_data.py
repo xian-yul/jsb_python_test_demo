@@ -23,7 +23,13 @@ def prepare_request_data(config: Dict[str, Any], extra_params: Optional[Dict] = 
 
     timestamp = int(time.time() * 1000)
     name = config['API_NAME']
-    url = config['API_URL'] + str(timestamp)
+
+    api_url = config['API_URL']
+    if 'timestamp=' in api_url:
+        url = api_url
+    else:
+        url = api_url + ('&' if '?' in api_url else '?') + f'timestamp={timestamp}'
+
     method = config['METHOD']
 
     body = config.get('Body') or config.get('BODY') or {}
@@ -87,17 +93,31 @@ def prepare_request_data_list(config: Dict[str, Any], extra_params: Optional[Dic
     request_list = []
     timestamp = int(time.time() * 1000)
     name = config['API_NAME']
-    url_template = config['API_URL']
+
+    # ⭐ 从 config 获取原始 URL（去掉 load_api_yaml 添加的时间戳）
+    api_url = config['API_URL']
+    # 移除已存在的时间戳参数
+    import re
+    clean_url = re.sub(r'[?&]timestamp=\d+', '', api_url)
+    # 重新添加时间戳
+    url_base = clean_url.rstrip('?').rstrip('&')
+    url_template = url_base + ('&' if '?' in url_base else '?') + 'timestamp='
+
     method = config['METHOD']
     base_headers = config.get('headers') or config.get('Headers', {})
     if base_headers is None:
         base_headers = {}
 
+    base_body = config.get('Body') or config.get('BODY') or {}
+    if not isinstance(base_body, dict):
+        base_body = {}
+
     for test_data in test_data_list:
         if not isinstance(test_data, dict):
             continue
 
-        url = url_template
+        # ⭐ 拼接 URL 和时间戳
+        url = url_template + str(timestamp)
 
         if extra_params:
             for key, value in extra_params.items():
@@ -105,9 +125,10 @@ def prepare_request_data_list(config: Dict[str, Any], extra_params: Optional[Dic
 
         params = {k: v for k, v in test_data.items()
                   if k not in ['description', 'result']}
-        print(params)
-        encryption_params = generate_encryption_params(params, timestamp)
-        # params 只包含: {phone, loginType, verifyCode}
+
+        merged_params = {**base_body, **params}
+
+        encryption_params = generate_encryption_params(merged_params, timestamp)
         sk = encryption_params.get('sk')
         body_json = encryption_params.get('body_json')
         var = encryption_params.get('var')

@@ -26,19 +26,19 @@ API_NAME: '买家密码登录'
 API_URL: '/api/loginByPwd?timestamp='
 METHOD: 'POST'
 test_data:
-  - phone: 18934819481
+  - phone: '18934819481'
     loginType: 1
-    verifyCode: "1111111A"
+    password: '1111111A'
     description: '正常用户登录'
     result: 200
   - phone: 17200000006
     loginType: 1
-    verifyCode: 666666
+    password: 666666
     description: '新用户登录'
     result: 200
   - phone: 17200000007
     loginType: 1
-    verifyCode: 666666
+    password: 666666
     description: '异常账号登录'
     result: 200
 headers:
