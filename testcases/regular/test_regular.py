@@ -104,6 +104,13 @@ class TestRegularFunctions:
         assert response is not None
         assert response.status_code == 200
 
+    def test_create_order(self,api_client):
+        resp = api_client.post(
+            "https://your-api.com/order",
+            json={"sku": "A001", "qty": 1}
+        )
+        assert resp.status_code == 201
+
 
 if __name__ == '__main__':
     # 运行当前目录下所有测试文件并生成allure报告

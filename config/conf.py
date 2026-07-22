@@ -16,7 +16,7 @@ class ConfigManager(object):
     LOG_DIR = os.path.join(OUTPUT_DIR, 'logs')
 
     # 报告目录
-    REPORT_DIR = os.path.join(OUTPUT_DIR, 'report')
+    REPORT_DIR = os.path.join(OUTPUT_DIR, 'allure-results')
 
     # 页面元素目录
     ELEMENT_PATH = os.path.join(BASE_DIR, 'yaml')

@@ -81,3 +81,4 @@ print(f"请求url: {request.url}")
 print(f"请求结果 : {request.status_code}")
 print(f"返回数据 : {request.text}")
 print("进行领取优惠券")
+

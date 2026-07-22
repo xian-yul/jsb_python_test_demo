@@ -15,11 +15,11 @@ class TestUserClaim:
         pass
 
     def setup_class(cls):
-        env = EnvConfig(env="test")
+        env = EnvConfig(env="preview")
         cls.user_claim_coupon = UserClaimCouponService(env.base_url['USER_URL'])
         cls.token = None
 
-    @pytest.fixture
+    # @pytest.fixture
     def test_user_claim_coupon(self):
         """测试领取优惠券成功"""
         response = self.user_claim_coupon.user_claim()
